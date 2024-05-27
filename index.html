@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic URL Redirect</title>
+</head>
+<body>
+    <script>
+        function getDayName(date) {
+            const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            return days[date.getDay()];
+        }
+
+        function formatDate(date) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = String(date.getFullYear()).slice(-2);
+            return `${day}${month}${year}`;
+        }
+
+        const date = new Date();
+        const dayName = getDayName(date);
+        const formattedDate = formatDate(date);
+        const url = `https://wods.crossfitpanda.com/${dayName}-${formattedDate}/`;
+
+        window.location.href = url;
+    </script>
+</body>
+</html>
